@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen>
     // Animation Controller
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 2),
+      duration: const Duration(milliseconds: 3500),
     );
 
     final random = Random();
@@ -36,18 +36,18 @@ class _SplashScreenState extends State<SplashScreen>
     _positions = List.generate(text.length, (index) {
       return Tween<Offset>(
         begin: Offset(
-          (random.nextDouble() * 2 - 1) * 3, // Random X position
-          (random.nextDouble() * 2 - 1) * 3, // Random Y position
+          (random.nextDouble() * 50 - 1) * 3, // Random X position
+          (random.nextDouble() * 50 - 1) * 3, // Random Y position
         ),
         end: Offset.zero, // Target position (center)
       ).animate(
-        CurvedAnimation(parent: _controller, curve: Curves.easeOut),
+        CurvedAnimation(parent: _controller, curve: Curves.easeInOutBack),
       );
     });
 
     _fadeAnimations = List.generate(text.length, (index) {
       return Tween<double>(begin: 0.0, end: 1.0).animate(
-        CurvedAnimation(parent: _controller, curve: Curves.easeIn),
+        CurvedAnimation(parent: _controller, curve: Curves.easeInOutBack),
       );
     });
 
@@ -55,7 +55,7 @@ class _SplashScreenState extends State<SplashScreen>
     _controller.forward();
 
     // Navigate to the next screen after the splash delay
-    Future.delayed(const Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 6), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) {
@@ -88,8 +88,8 @@ class _SplashScreenState extends State<SplashScreen>
         decoration: BoxDecoration(
           gradient: RadialGradient(
             focal: Alignment.center,
-            focalRadius: width * 0.00001,
-            radius: width * 0.0009,
+            focalRadius: width * 0.00009,
+            radius: width * 0.0039,
             colors: [
               backgroundColor,
               sideColor,
