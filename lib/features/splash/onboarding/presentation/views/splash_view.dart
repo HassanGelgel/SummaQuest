@@ -88,8 +88,8 @@ class _SplashScreenState extends State<SplashScreen>
         decoration: BoxDecoration(
           gradient: RadialGradient(
             focal: Alignment.center,
-            focalRadius: width * 0.00009,
-            radius: width * 0.0039,
+            focalRadius:0.005,
+            radius: 0.6,
             colors: [
               backgroundColor,
               sideColor,
@@ -108,7 +108,7 @@ class _SplashScreenState extends State<SplashScreen>
             ),
             // Scatter animation for text
             Positioned(
-              bottom: height * 0.3,
+              bottom: height * 0.2,
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: List.generate(text.length, (index) {
@@ -120,7 +120,7 @@ class _SplashScreenState extends State<SplashScreen>
                         text[index],
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: width * 0.1,
+                          fontSize: 50 * width / height,
                           fontFamily: "orbitron",
                         ),
                       ),
